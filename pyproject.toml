@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "mike-PSR"
+version = "0.3.8"
+description = "This is a documentation commit-versioned that do many thing automatically. Such wow"
+authors = ["Zackarie Vinckier <zackarie.vinckier--coffinier@eviden.com>"]
+license = "BSDv3"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+mike = "^2.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.semantic_release]
+commit_author = "github-actions <action@github.com>"
+version_toml = ["pyproject.toml:tool.poetry.version"]
+commit_message = "chore(semver): update version to {version}"
+
+[tool.semantic_release.branches.dev]
+match = "(dev)"
+prerelease = false
+
+[tool.semantic_release.changelog.environment]
+trim_blocks = true
+lstrip_blocks = true
+
+[tool.semantic_release.remote]
+name = "origin"
+type = "github"
+ignore_token_for_push = false
+token = { env = "GH_TOKEN" }
+
+[tool.semantic_release.publish]
+dist_glob_patterns = ["dist/*"]
+upload_to_vcs_release = true

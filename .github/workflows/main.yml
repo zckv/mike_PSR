@@ -1,0 +1,74 @@
+---
+name: Build and Deploy documentation
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+jobs:
+  semrel:
+    runs-on: ubuntu-latest
+    concurrency: release
+    outputs:
+      released: ${{ steps.semrel.outputs.released }}
+      tag: ${{ steps.semrel.outputs.tag }}
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+      - uses: python-semantic-release/python-semantic-release@v8.3.0
+        id: semrel
+        with:
+          root_options: "-v"
+          changelog: true
+          vcs_release: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+  deploy-mike:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+    needs: [semrel]
+    if: true || github.ref_name == 'master'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - name: Install Poetry
+        env:
+          VENV_P: /opt/poetry
+          VERSION: 1.6.0
+        run: |
+          python3 -m venv "$VENV_P"
+          $VENV_P/bin/pip install poetry=="$VERSION"
+          echo "$VENV_P/bin/" >> "$GITHUB_PATH"
+      - name: Config git
+        run: |
+          git config user.name "github-actions""github-actions"
+          git config user.email "action@github.com"
+      - name: Build with mkdocs
+        env:
+          CONFIG_PATH: ./mkdocs.yml
+        run: |
+          poetry install
+          echo "doc version: $(poetry version)"
+          poetry run mike deploy "$(poetry version | cut -d ' ' -f2)" latest -u --push
+      - name: Push gh-pages
+        run: |
+          git status
+          git switch gh-pages
+          git status
+          # git add .
+          # git commit -m "chore: add docs from ci"
+          # git push -u origin gh-pages

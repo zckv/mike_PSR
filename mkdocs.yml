@@ -1,0 +1,25 @@
+site_name: Automatically Versionned Docs
+site_description: This is a documentation commit-versioned that do many thing automatically. Such wow
+site_author: "Zackarie VINCKIER <zackarie.vinckier--coffinier@eviden.com>"
+site_url: "https://zckv.github.io/mike_mkdocs_python_semantic_release/"
+copyright: "The Unlicence"
+
+repo_name: mike_mkdocs_python_semantic_release
+repo_url: "https://github.com/zckv/mike_mkdocs_python_semantic_release"
+edit_uri: "tree/dev/docs"
+remote_branch: "gh-pages"
+
+
+nav:
+  - Doc: index.md
+
+plugins:
+  mike:
+    alias_type: symlink
+    redirect_template: null
+    deploy_prefix: ''
+    canonical_version: latest
+    version_selector: true
+    css_dir: css
+    javascript_dir: js
+
