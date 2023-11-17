@@ -19,6 +19,10 @@ commit_author = "github-actions <action@github.com>"
 version_toml = ["pyproject.toml:tool.poetry.version"]
 commit_message = "chore(semver): update version to {version}"
 
+[tool.semantic_release.branches.master]
+match = "(master)"
+prerelease = false
+
 [tool.semantic_release.branches.dev]
 match = "(dev)"
 prerelease = false
