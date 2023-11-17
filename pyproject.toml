@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mike-PSR"
-version = "0.1.0"
+version = "0.2.0"
 description = "This is a documentation commit-versioned that do many thing automatically. Such wow"
 authors = ["Zackarie Vinckier <zackarie.vinckier--coffinier@eviden.com>"]
 license = "BSDv3"
