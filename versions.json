@@ -1,10 +1,5 @@
 [
   {
-    "version": "set-default",
-    "title": "set-default",
-    "aliases": []
-  },
-  {
     "version": "0.0.2",
     "title": "0.0.2",
     "aliases": [
