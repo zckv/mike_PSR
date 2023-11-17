@@ -1,6 +1,12 @@
 # CHANGELOG
+## v0.3.0 (2023-11-17)
+### Chore
+* chore: Update main.yml ([`a4ef7be`](https://github.com/zckv/mike_PSR/commit/a4ef7beb63ccef9a9a3096d4f755f61bef71af2c))
+### Feature
+* feat: use main workflow to deploy ([`12af28f`](https://github.com/zckv/mike_PSR/commit/12af28f872e912ad6394be2c76411a140ef083e4))
 ## v0.2.0 (2023-11-17)
 ### Chore
+* chore(semver): update version to 0.2.0 ([`ba0b31f`](https://github.com/zckv/mike_PSR/commit/ba0b31f2e4b0d30204c1f35df5d6554f051c7d64))
 * chore: test 0.0.3 commit ([`2169dea`](https://github.com/zckv/mike_PSR/commit/2169dea5a67494e269abb9d011591f89df5e662a))
 * chore: test 0.0.2 commit ([`dc9c0e4`](https://github.com/zckv/mike_PSR/commit/dc9c0e41a9c27d11c10defc7f3387dc9b53c3af4))
 ### Feature
