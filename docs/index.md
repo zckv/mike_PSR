@@ -2,7 +2,7 @@
 
 Mike-PSr for short ?
 
-v0.1.0
+v0.3.0
 
 This is a documentation commit-versioned that do many thing automatically. Such wow
 
